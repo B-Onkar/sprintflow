@@ -4,9 +4,12 @@ import Image from 'next/image'
 import { Button } from './ui/button'
 import { PenBox } from 'lucide-react'
 import UserMenu from './user-menu'
+import { checkUser } from '@/lib/checkUser'
 // import { UserLoading } from './user-loading'
 
-const Header = () => {
+const Header = async () => {
+  const user = await checkUser();
+  console.log(user);
   return (
     <header className="container mx-auto">
       <nav className="py-6 px-4 flex justify-between items-center">
