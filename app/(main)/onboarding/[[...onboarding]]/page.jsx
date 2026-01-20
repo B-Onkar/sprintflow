@@ -5,24 +5,31 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 const Onboarding = () => {
-    const { organization } = useOrganization();
-    const router = useRouter();
+  const { organization } = useOrganization();
+  const router = useRouter();
 
-    useEffect(() => {
-        if (organization) {
-            router.push(`/organization/${organization.slug}`);
-        }
-    }, [organization]);
+  console.log("Onboarding Component Rendered");
+  console.log("Current Organization:", organization);
 
-    return (
+  // useEffect(() => {
+  //   if (organization) {
+  //     console.log(
+  //       "Organization detected, redirecting to:",
+  //       `/organization/${organization.slug}`,
+  //     );
+  //     router.push(`/organization/${organization.slug}`);
+  //   }
+  // }, [organization]);
+
+  return (
     <div className="flex justify-center items-center pt-14">
       <OrganizationList
         hidePersonal
-        // afterCreateOrganizationUrl="/organization/:slug"
-        // afterSelectOrganizationUrl="/organization/:slug"
+        afterCreateOrganizationUrl="/organization/:slug"
+        afterSelectOrganizationUrl="/organization/:slug"
       />
     </div>
-  )
-}
+  );
+};
 
-export default Onboarding
+export default Onboarding;
